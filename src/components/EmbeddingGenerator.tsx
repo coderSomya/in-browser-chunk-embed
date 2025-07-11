@@ -114,12 +114,12 @@ const EmbeddingGenerator = () => {
     setProgress(0);
 
     try {
-      // Load the embedding model (lightweight model that runs in browser)
+      // Load the embedding model (using wasm device for browser compatibility)
       console.log('Loading embedding model...');
       const extractor = await pipeline(
         'feature-extraction',
         'Xenova/all-MiniLM-L6-v2',
-        { device: 'cpu' }
+        { device: 'wasm' }
       );
       
       setModel(extractor);
